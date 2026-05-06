@@ -26,7 +26,12 @@ const Teacher = require('./models/Teacher'); // أو حسب اسم الملف ع
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("🚀 EduLearn Backend is running smoothly on Vercel!");
+  res.status(200).send("🚀 EduLearn Backend is running smoothly on Vercel!");
+});
+
+// مسار إضافي للتأكد من عمل الـ API
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", message: "Backend is healthy" });
 });
 
 app.use(cors({
