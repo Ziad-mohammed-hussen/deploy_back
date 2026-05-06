@@ -34,7 +34,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:4200",
+  origin: true, // سيقوم بقبول الطلب من أي رابط (بما في ذلك رابط الـ Frontend الخاص بك)
   credentials: true
 }));
 
