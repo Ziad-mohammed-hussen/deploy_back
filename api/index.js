@@ -33,10 +33,20 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Backend is healthy via api/index" });
 });
 
-app.use(cors({
-  origin: true, // سيقوم بقبول الطلب من أي رابط (بما في ذلك رابط الـ Frontend الخاص بك)
-  credentials: true
-}));
+// 🌍 Manual CORS Middleware (More reliable on Vercel)
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  res.setHeader('Access-Control-Allow-Origin', origin || '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Accept, Accept-Language, Cookie');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // Handle Preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  next();
+});
 
 app.post('/api/payments/webhook', express.raw({ type: 'application/json' }), paymentController.handleWebhook);
 
