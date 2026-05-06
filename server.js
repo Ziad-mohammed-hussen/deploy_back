@@ -24,6 +24,11 @@ const examRoutes = require('./routes/examRoutes');
 const inquiryRoutes = require('./routes/inquiryRoutes');
 const Teacher = require('./models/Teacher'); // أو حسب اسم الملف عندك
 const app = express();
+
+app.get("/", (req, res) => {
+  res.send("🚀 EduLearn Backend is running smoothly on Vercel!");
+});
+
 app.use(cors({
   origin: process.env.FRONTEND_URL || "http://localhost:4200",
   credentials: true
