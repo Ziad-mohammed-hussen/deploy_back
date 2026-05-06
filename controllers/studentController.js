@@ -2,7 +2,7 @@ const Enrollment = require("../models/Enrollment");
 const User = require("../models/User");
 const Course = require("../models/Course");
 const Exam = require("../models/Exam"); // تأكد إن المسار لملف الـ Exam صح
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const Progress = require("../models/Progress");
 
 // POST /student/enroll/:courseId
