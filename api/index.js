@@ -33,6 +33,14 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Backend is healthy via api/index" });
 });
 
+app.get("/api/debug-env", (req, res) => {
+  res.status(200).json({
+    mongoUriExists: !!process.env.MONGO_URI,
+    frontendUrlExists: !!process.env.FRONTEND_URL,
+    accessTokenSecretExists: !!process.env.ACCESS_TOKEN_SECRET
+  });
+});
+
 // 🌍 Manual CORS Middleware (More reliable on Vercel)
 app.use((req, res, next) => {
   const origin = req.headers.origin;
