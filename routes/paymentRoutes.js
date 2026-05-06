@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const paymentController = require("../controllers/paymentController");
-const { authenticate, authorizeAdmin } = require("../Middleware/adminMiddleware");
+const { authenticate, authorizeAdmin } = require("../middleware/adminMiddleware");
 
 // Use express.raw() for the webhook endpoint to verify Stripe signature
 router.post(

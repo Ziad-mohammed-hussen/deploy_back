@@ -3,7 +3,7 @@ const router = express.Router();
 const authControllers = require("../controllers/authControllers");
 const verifyJWT = require("../middleware/verifyJWT");
 const passport = require("../config/passport");
-const upload = require('../Middleware/upload');
+const upload = require('../middleware/upload');
 // Auth
 router.post("/register/student", authControllers.registerStudent);//done
 // بنقوله استقبل ملفين: واحد اسمه cv والتاني اسمه video

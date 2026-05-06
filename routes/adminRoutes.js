@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { authenticate, authorizeAdmin } = require("../Middleware/adminMiddleware");
+const { authenticate, authorizeAdmin } = require("../middleware/adminMiddleware");
 
 const {
   // Teachers
