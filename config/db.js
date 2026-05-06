@@ -10,12 +10,7 @@ const connectDB = async () => {
     }
 };
 
-mongoose.connection.on('connected', async () => {
-  const models = ['User', 'Teacher', 'Student', 'Course', 'Enrollment', 'Message'];
-  for (const m of models) {
-    await mongoose.model(m).createCollection();
-  }
-  console.log("✅ All Collections are visible in Atlas!");
-});
+// Removed auto-collection creation because it causes crashes on serverless environments
+// Mongoose handles collection creation automatically.
 
 module.exports = connectDB;
